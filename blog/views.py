@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from django.views import generic
 from django.contrib import messages
 from .models import Post
@@ -40,7 +41,6 @@ def post_detail(request, slug):
             messages.add_message(request, messages.SUCCESS, 'Comment submitted and awaiting for approval')
             
     comment_form = CommentForm()
-
     return render(request, "blog/post_detail.html",
                   {"post": post,
                    "comments": comments,
